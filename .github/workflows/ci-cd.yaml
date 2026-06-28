@@ -248,6 +248,11 @@ jobs:
           chmod +x scripts/rollback.sh
           ./scripts/rollback.sh production
 
+      - name: Run Hadolint (Dockerfile linting)
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+        env: dockerfile: Dockerfile
+
       - name: Notify Slack on success
         if: success()
         uses: slackapi/slack-github-action@v1.26.0
